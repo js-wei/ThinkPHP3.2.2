@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+    <!--拥有者:魏巍
+        创建日期:2014-03-13 15:23:57
+        编辑器:Editplus-->
+    <meta charset="utf-8">
+    <title>你若敢忘记我，别人会不知道你</title>
+    <meta name="keywords" content="你若你记得我，别人会记得你"/>
+    <meta name="description" content="你若懂我，别人也懂你"/>
+    <meta name="author" content="魏巍"/>
+    <meta name="generator" content="Editplus"/>
+    <meta name="robots" content="all"/>
+    <link href="__PUBLIC__/style/style.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="__PUBLIC__/kindeditor-4.1.10/themes/default/default.css" />
+    <link rel="stylesheet" href="__PUBLIC__/kindeditor-4.1.10/plugins/code/prettify.css" />
+    <script src="__PUBLIC__/Plug/jquery.validate/jquery.validate.js" type="text/javascript"></script>
+    <link href="__PUBLIC__/Plug/jquery.validate/jquery.validate.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/kindeditor-all-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/lang/zh_CN.js"></script>
+    <script charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/plugins/code/prettify.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Plug/My97DatePicker/WdatePicker.js"></script> 
+    <script  type="text/javascript">
+        KindEditor.ready(function(K) {
+            var editor1 = K.create('#editor,#editor1', {
+                cssPath : '__PUBLIC__/kindeditor-4.1.10/plugins/code/prettify.css',
+                uploadJson : '__PUBLIC__/kindeditor-4.1.10/php/upload_json.php',
+                fileManagerJson : '__PUBLIC__/kindeditor-4.1.10/php/file_manager_json.php',
+                allowFileManager : true,
+                afterCreate : function() {
+                    var self = this;
+                    K.ctrl(document, 13, function() {
+                        self.sync();
+                        K('form[name=example]')[0].submit();
+                    });
+                    K.ctrl(self.edit.doc, 13, function() {
+                        self.sync();
+                        K('form[name=example]')[0].submit();
+                    });
+                }
+            });
+            prettyPrint();
+        });
+    </script>
+</head>
+<body>
+    <form id="form1" action="__URL__/Insert" method="post" enctype="multipart/form-data" >
+    <div id="crumbs">
+    </div>
+    <div id="wrapper">  
+        <div class="contain">
+            <table border="0" cellpadding="0" cellspacing="0" class="table">
+                <tr>
+                    <th class="header" colspan="2">
+                        添加内容
+                    </th>
+                </tr>
+                 <tr class="gridalternatingrow" >
+                    <td class="tdl" align="right" width="15%" > <span class="red">*</span>标题</td>
+                    <td class="tdr"><input type="text" name="title" value="{$article.title}" class="tbox required">
+                        <input type="hidden" name="cid" value="{$Think.get.cid}">
+                    </td>
+                </tr>
+                <tr class="gridalternatingrow" >
+                    <td class="tdl" align="right" width="15%">关键词</td>
+                    <td class="tdr"><textarea  name="keywords" class="tbox">{$article.keywords}</textarea></td>
+                 </tr>
+                <tr class="gridalternatingrow" >
+                    <td class="tdl" align="right" width="15%">内容说明</td>
+                    <td class="tdr"><textarea  name="description" class="tbox">{$article.description}</textarea></td>
+                 </tr>
+                <!-- <tr>
+                    <td class="tdl">
+                        <span class="red">*</span> 内容图片：
+                    </td>
+                    <td class="tdr">
+                        <input type="button" id="J_selectImage" value="批量上传" />
+                        <input type="button" id="filemanager" value="浏览服务器" />
+                        <div class="J_imageView">{$article.image|get_img}</div>
+                        <input type="hidden" name="image" id="J_imageView" value="{$article.image}" />
+                    </td>
+                </tr>  -->
+                <tr class="gridalternatingrow" >
+                    <td class="tdl" align="right" width="15%">ICO</td>
+                    <td class="tdr">
+                        <input type="file" name="ico" />
+                        <!-- <span class="button add-images">增加</span> -->
+                    </td>
+                 </tr>
+                  <if condition="$Think.get.cid eq 24">
+                     <tr class="gridalternatingrow" >
+                        <td class="tdl" align="right" width="15%">文件</td>
+                        <td class="tdr">
+                            <input type="file" name="file" />
+                        </td>
+                     </tr>
+                     <else/>
+                    <tr class="gridalternatingrow" >
+                        <td class="tdl" align="right" width="15%">图片</td>
+                        <td class="tdr">
+                            <input type="file" name="image[]" />
+                            <span class="button add-images">增加</span>
+                        </td>
+                     </tr>
+                 </if>
+                 <tr class="gridalternatingrow" >
+                    <td class="tdl" align="right" width="15%">文章属性</td>
+                    <td class="tdr">
+                        <input type="checkbox" name="attr[com]" value="1" <eq name="article.com" value="1">checked="checked"</eq>>推荐
+                        <input type="checkbox" name="attr[hot]" value="1" <eq name="article.hot" value="1">checked="checked"</eq>>最热
+                        <input type="checkbox" name="attr[new]" value="1" <eq name="article.new" value="1">checked="checked"</eq>>最新
+                        <input type="checkbox" name="attr[head]" value="1" <eq name="article.head" value="1">checked="checked"</eq>>头条
+                        <input type="checkbox" name="attr[top]" value="1" <eq name="article.top" value="1">checked="checked"</eq>>置顶
+                        <input type="checkbox" name="attr[img]" value="1" <eq name="article.img" value="1">checked="checked"</eq>>图文
+                    </td>
+                 </tr>
+                 <tr class="gridalternatingrow" >
+                    <td class="tdl" align="right" width="15%">作者/编辑</td>
+                    <td class="tdr"><input type="text" name="author" value="<empty name="article.author">Admin<else/>{$article.author}</empty>" /></td>
+                 </tr>
+                <if condition="($Think.get.cid eq 13) OR ($Think.get.cid eq 14) ">
+                     <tr class="gridalternatingrow" >
+                        <td class="tdl" align="right" width="15%">游戏规则</td>
+                        <td class="tdr">
+                            <textarea  name="content" id="editor" style="width:98%;height:400px;">{$article.content}</textarea>
+                        </td>
+                     </tr>
+                     <tr class="gridalternatingrow" >
+                        <td class="tdl" align="right" width="15%">积分等级</td>
+                        <td class="tdr">
+                            <textarea  name="extend" id="editor1" style="width:98%;height:150px;">{$article.content}</textarea>
+                        </td>
+                     </tr>
+                     <else/>
+                      <tr class="gridalternatingrow" >
+                        <td class="tdl" align="right" width="15%">文章内容</td>
+                        <td class="tdr">
+                            <textarea  name="content" id="editor" style="width:98%;height:400px;">{$article.content}</textarea>
+                        </td>
+                     </tr>
+                </if>
+                  <tr>
+                    <td class="tdl" style="width: 108px">
+                        阅读数：
+                    </td>
+                    <td class="tdr">
+                        <input type="text" name="hits" size="5" value="<empty name="article.author">0<else/>{$article.read}</empty>" onkeyup="this.value=this.value.replace(/\D/g,'')"onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                        <span class="tis"></span>
+                    </td>
+                </tr>
+                <switch name="Think.get.cid">
+                    <case value="6|7|8|9|10|11">
+                        <tr>
+                            <td class="tdl" style="width: 108px">
+                                库存数量：
+                            </td>
+                            <td class="tdr">
+                                <input type="text" name="total" size="5" value="<empty name="article.total">0<else/>{$article.total}</empty>" onkeyup="this.value=this.value.replace(/\D/g,'')"onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                                <span class="tis"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdl" style="width: 108px">
+                                所需奖品券：
+                            </td>
+                            <td class="tdr">
+                                <input type="text" name="deplete" size="5" value="<empty name="article.deplete">0<else/>{$article.deplete}</empty>" onkeyup="this.value=this.value.replace(/\D/g,'')"onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                                <span class="tis"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdl" style="width: 108px">
+                                开始时间：
+                            </td>
+                            <td class="tdr">
+                                <input type="text" name="startTime" size="15" value="{$article.startTime}"  class="Wdate" onClick="WdatePicker();">
+                                <span class="tis"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdl" style="width: 108px">
+                                结束时间：
+                            </td>
+                            <td class="tdr">
+                                <input type="text" name="endTime" size="15" value="{$article.endTime}"  class="Wdate" onClick="WdatePicker();">
+                                <span class="tis"></span>
+                            </td>
+                        </tr>
+                    </case> 
+                </switch>
+                <tr>
+                    <td class="tdl" style="width: 108px">
+                        排序ID：
+                    </td>
+                    <td class="tdr">
+                        <input type="text" name="sort" size="5" value="<empty name="article.author">100<else/>{$article.read}</empty>" onkeyup="this.value=this.value.replace(/\D/g,'')"onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                        <span class="tis">数字越小越往前排序</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdl" style="width: 108px">
+                        锁定：
+                    </td>
+                 <td class="tdr">
+                       <empty name="article.author">
+                            <input type="radio" name="status" value="0" checked>否
+                            <input type="radio" name="status" value="1">是
+                            <else/>
+                            <if condition="article.status eq 0">
+                                <input type="radio" name="status" value="0" checked>否
+                                <input type="radio" name="status" value="1">是
+                                <else/>
+                                <input type="radio" name="status" value="0" >否
+                                <input type="radio" name="status" value="1" checked>是</if>
+                                <span class="tis">锁定后无法显示</span>
+                            </if>
+                       </empty>
+                        <span class="tis">锁定后无法显示</span>
+                    </td>
+                <tr>
+                    <td class="foot">
+                    </td>
+                    <td class="foot">
+                       <input type="submit" value="提 交" class="button">&nbsp;
+                        <input type="button" value="返回列表" onclick="window.location.href='__URL__/index/cid/{$Think.get.cid}';" class="button" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+ </form>
+ <script>
+    $(function(){
+        $('#form1').validate();
+        $('.add-images').click(function(event) {
+            /* Act on the event */
+            $(this).before('<input type="file" name="image[]" />');
+        });
+    });
+ </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+    <!--拥有者:魏巍
+        创建日期:2014-03-14 11:52:07
+        编辑器:Editplus-->
+	<meta charset="utf-8">
+	<title>你若敢忘记我，别人会不知道你</title>
+	<meta name="keywords" content="你若你记得我，别人会记得你"/>
+	<meta name="description" content="你若懂我，别人也懂你"/>
+	<meta name="author" content="魏巍"/>
+	<meta name="generator" content="Editplus"/>
+	<meta name="robots" content="all"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <link href="__PUBLIC__/style/style.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="__PUBLIC__/Plug/jquery.validate/jquery.validate.js" type="text/javascript"></script>
+    <link href="__PUBLIC__/Plug/jquery.validate/jquery.validate.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/Plug/jquery.validate/my.rules.js" type="text/javascript"></script>
+    <style type="text/css">
+        select { float: left; margin-right: 10px; width: auto; }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $("#form1").validate({ rules: {
+                username: {
+                    minlength: 5,
+                    remote: {
+                        type: "post",
+                        url: "__URL__/checkNameRepeat",
+                        data: {
+                            username: function () {
+                                return $("#txtName").val();
+                            },
+                            type: 1
+                        },
+                        dataType: "html",
+                        dataFilter: function (data, type) {
+                            if (data == 0) { //用户名不重复
+                                return true;
+                            }
+                            else { //用户名重复
+                                return false;
+                            }
+                        }
+                    }
+                },
+                txtPswd: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 15
+                },
+                txtPswd2: {
+                    required: true,
+                    equalTo: "#txtPswd"
+                }
+            },
+                messages: { //重写提示信息
+                    username: {
+                        remote: " 用户名重复"
+                    }
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+	 <form id="form1" action="__URL__/addhandler" method="post">
+    <div id="crumbs">
+    </div>
+    <div id="wrapper">
+        <div class="contain">
+            <table border="0" cellpadding="0" cellspacing="0" class="table">
+                <tr>
+                    <th class="header" colspan="2">
+                        用户管理
+                    </th>
+                </tr>
+                <tr>
+                    <td class="tdl" style="width: 108px;">
+                        <span class="red">*</span> 登录名称：
+                    </td>
+                    <td class="tdr">
+                        <input type="text" name="username" id="txtName" class="tbox required">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdl">
+                        <span class="red">*</span> 所属群组：
+                    </td>
+                    <td class="tdr">
+                       <select name="gid">
+                           <option value="0">默认</option>
+                       </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdl">
+                        <span class="red">*</span> 用户密码：
+                    </td>
+                    <td class="tdr">
+                        <input type="password" name="password" id="txtPswd" class="tbox required">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdl">
+                        <span class="red">*</span> 确认密码：
+                    </td>
+                    <td class="tdr">
+                       <input type="password" name="txtPswd2" id="txtPswd2" class="tbox">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdl">
+                        用户状态：
+                    </td>
+                    <td class="tdr"> 
+                        <label for="lock1"><input type="radio" name="status" id="lock1" value="1" checked>是</label>
+                        <label for="lock"><input type="radio" name="status" id="lock" value="0" >否</label>
+                        <span class="tis">用户锁定后无法登录</span>
+                    </td>
+                </tr>
+               <!--  <tr>
+                    <td class="tdl">
+                        用户权限：
+                    </td>
+                    <td class="tdr">
+                        <label for="auth"><input type="radio" name="auth" id="auth" checked>允许审核权限</label>
+                        <label for="auth1"><input type="radio" name="auth" id="auth1">允许排序权限</label>
+                    </td>
+                </tr> -->
+                <tr>
+                    <td class="foot">
+                    </td>
+                    <td class="foot">
+                       
+                        <input type="submit" value="保 存" class="button">&nbsp;
+                        <input type="button" value="返回列表" onclick="window.location.href='{:U('index')}';" class="button" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

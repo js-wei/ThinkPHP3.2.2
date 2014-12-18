@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+    <!--拥有者:魏巍
+        创建日期:2014-03-13 15:50:52
+        编辑器:Editplus-->
+	<meta charset="utf-8">
+	<title>你若敢忘记我，别人会不知道你</title>
+	<meta name="keywords" content="你若你记得我，别人会记得你"/>
+	<meta name="description" content="你若懂我，别人也懂你"/>
+	<meta name="author" content="魏巍"/>
+	<meta name="generator" content="Editplus"/>
+	<meta name="robots" content="all"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <link href="__PUBLIC__/style/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	 <form id="form1" action="" method="post">
+    <div id="crumbs">
+    </div>
+    <div id="wrapper">
+        <div class="contain">
+            <table border="0" cellpadding="0" cellspacing="0" class="table">
+                <tr>
+                    <th class="header" colspan="2">
+                        群组编辑
+                    </th>
+                </tr>
+                <tr>
+                    <td class="tdl" style="width: 108px;">
+                        <span class="red">*</span> 群组名称：
+                    </td>
+                    <td class="tdr">
+                        <input type="text" name="name" id="name" value="超级管理员组">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdl" style="width: 108px;">
+                        &nbsp;<span class="red">*</span> 赋予权限：&nbsp;
+                    </td>
+                    <td class="tdr">
+						 <fieldset style=" width:450px;">
+							<legend>群组名称</legend>
+							<input type="checkbox" name="power" value=""/>群组权限
+						</fieldset>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="tdl" style="width: 108px">
+                        排序ID：
+                    </td>
+                    <td class="tdr">
+                        <input type="text" name="sort" size="5" value="100" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                            onafterpaste="this.value=this.value.replace(/\D/g,'')">
+                        <span class="tis">数字越小越往前排序</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="foot">
+                    </td>
+                    <td class="foot">
+						<input type="submit" value="保 存" class="button">&nbsp;
+                        <input type="button" value="返回列表" onclick="window.location.href='{:U('index')}';" class="button" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+    <!--拥有者:魏巍
+        创建日期:2014-03-13 15:32:24
+        编辑器:Editplus-->
+    <meta charset="utf-8">
+    <title>你若敢忘记我，别人会不知道你</title>
+    <meta name="keywords" content="你若你记得我，别人会记得你"/>
+    <meta name="description" content="你若懂我，别人也懂你"/>
+    <meta name="author" content="魏巍"/>
+    <meta name="generator" content="Editplus"/>
+    <meta name="robots" content="all"/>
+    <link href="__PUBLIC__/style/style.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="__PUBLIC__/umeditor/third-party/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/umeditor/umeditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/umeditor/umeditor.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/umeditor/lang/zh-cn/zh-cn.js"></script>
+   
+</head>
+<body>
+    <form id="form1" method="post" action="__URL__/updateHandle">
+    <div id="wrapper">
+        <div class="contain">
+            <div class="gridbox">
+                <table border="0" cellpadding="0" cellspacing="0" class="gridtoolbar">
+                    <tr>
+                        <td align="left">
+                           修改基本配置
+                        </td>
+                        <td align="right">
+                        </td>
+                    </tr>
+                </table>
+                <table style="border-collapse: collapse" class="grid" border="1" rules="all" cellspacing="0">
+                    <tbody>
+                        <tr class="gridalternatingrow" >
+                            <td align="right" width="20%">网站名称</td>
+                            <td><input type="text" name="title" value="{$site.title}" class="tbox"></td>
+                        </tr>
+                        <tr class="gridalternatingrow" >
+                            <td align="right" width="20%">网站关键词</td>
+                            <td><textarea  name="keywords" class="tbox">{$site.keywords}</textarea></td>
+                        </tr>
+                        <tr class="gridalternatingrow" >
+                            <td align="right" width="20%">网站说明</td>
+                            <td><textarea  name="description"  class="tbox">{$site.description}</textarea></td>
+                        </tr>
+                        <tr class="gridalternatingrow" >
+                            <td align="right" width="20%">幻灯个数</td>
+                            <td><input type="text" name="sum" value="{$site.sum}" style="width:30px;"></td>
+                        </tr>
+                        <tr class="gridalternatingrow" >
+                            <td align="right" width="20%">联系方式</td>
+                            <td><textarea  name="conact" cols="40" rows="2">{$site.conact}</textarea></td>
+                        </tr>
+                        <tr class="gridalternatingrow" >
+                            <td align="right" width="20%">版权信息</td>
+                            <td><textarea  name="copyright" cols="40" rows="2">{$site.copyright}</textarea></td>
+                        </tr>
+                       <!--  <tr class="gridalternatingrow" >
+                            <td align="right" width="20%">友情链接</td>
+                            <td><textarea  name="flink" id="myEditor" style="width:340px;height:150px;">{$site.flink}</textarea></td>
+                        </tr> -->
+                        <tr class="gridalternatingrow" >
+                            <td align="right" width="20%">分享代码</td>
+                            <td><textarea  name="shard" cols="40" rows="2">{$site.shard}</textarea></td>
+                        </tr>
+                        <tr class="gridalternatingrow" >
+                            <td align="right" width="20%">统计代码</td>
+                            <td><textarea  name="code" cols="40" rows="2">{$site.code}</textarea></td>
+                        </tr>
+                        <tr class="gridtoolbar" >
+                            <td align="left" colspan="2" class="left">
+                              <input type="submit" value="提交" class="button"/> 
+                             <!--  <input type="button" value="返回列表" onclick="window.location.href='{:U('index')}';" class="button" /> -->
+                            </td>                                         
+                        </tr>
+                    </tbody>
+                </table>   
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>
+<script type="text/javascript">
+    var um = UM.getEditor('myEditor');    
+</script>

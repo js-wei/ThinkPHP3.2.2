@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+    <!--拥有者:魏巍
+        创建日期:2014-03-13 16:09:06
+        编辑器:Editplus-->
+    <meta charset="utf-8">
+    <title>你若敢忘记我，别人会不知道你</title>
+    <meta name="keywords" content="你若你记得我，别人会记得你"/>
+    <meta name="description" content="你若懂我，别人也懂你"/>
+    <meta name="author" content="魏巍"/>
+    <meta name="generator" content="Editplus"/>
+    <meta name="robots" content="all"/>
+    <link href="__PUBLIC__/style/style.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/thickbox/css/thickbox.css" rel="stylesheet" type="text/css" />
+    <script src="__PUBLIC__/Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+     <script src="__PUBLIC__/thickbox/js/thickbox_plus.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function del(id,cid) {
+            if (confirm("删除删除当前用户吗？")) {
+                var uri="__URL__/delete/id/" + id+'/cid/'+cid;
+                window.location.href = uri;
+            }
+        }
+       $(function(){
+           $('#search').change(function(){
+                var uri="__URL__/index/id/{$Think.get.id}/q/" + $(this).val();
+
+                if($('#keyword').val()!=""){
+                   uri += '/k/'+$("#keyword").val();
+                } 
+
+                window.location.href =uri; 
+           });
+       });
+    </script>
+</head>
+<body>
+    <form id="form1" method="post" action="">
+    <div id="wrapper">
+        <div class="contain">
+            <form method="post" action="__URL__/index">
+                 <table border="0" cellpadding="0" cellspacing="0" class="searchbox">
+                    <tr>
+                        <td class="icon">
+                        </td>
+                        <td align="left" valign="top">
+                            搜索：<input type="text" name="k" value="{$search.k}" id="keyword" class="tbox">
+                            <input type="hidden" name="id" value="{$Think.get.id}" id="id" class="tbox">
+                            &nbsp;
+                           <input type="submit" value="搜 索" class="buttonServer">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div class="gridbox">
+                <table border="0" cellpadding="0" cellspacing="0" class="gridtoolbar">
+                    <tr>
+                        <td align="left">
+                            <!-- <a href="__URL__/add/id/{$Think.get.id}">添加新记录</a> -->
+                        </td>
+                       <!--  <td align="right">
+                           <select name="search" id="search">
+                                <switch name="search.q" >
+                                    <case value="0" break="1">
+                                        <option value="-1" >所有记录
+                                        <option value="0" selected>正常记录
+                                        <option value="1">锁定记录
+                                    </case>
+                                    <case value="1" break="1">
+                                        <option value="-1" >所有记录
+                                        <option value="0" >正常记录
+                                        <option value="1" selected>锁定记录
+                                    </case>
+                                    <default/> 
+                                        <option value="-1" selected>所有记录
+                                        <option value="0">正常记录
+                                        <option value="1">锁定记录
+                                </switch>    
+                            </select>
+                        </td> -->
+                    </tr>
+                </table>
+                <table style="border-collapse: collapse" class="grid" border="1" rules="all" cellspacing="0">
+                   <tbody>
+                        <tr class="gridheader">
+                            <th scope="col" width="3%">
+                                序号
+                            </th>
+                            <th scope="col"  width="15%">
+                                用户名
+                            </th>
+                            <th scope="col"  width="15%">
+                                邮箱地址
+                            </th>
+                            <th scope="col"  width="15%">
+                                QQ号码
+                            </th>
+                           <!--  <th scope="col"  width="10%">
+                                联系电话
+                            </th> -->
+                            <th scope="col"  width="">
+                                留言信息
+                            </th>
+                            <th scope="col"  width="10%">
+                                是否回复
+                            </th>
+                            <th scope="col"  width="10%">
+                                留言时间
+                            </th>
+                           
+                            <th scope="col"  width="10%">
+                                操作
+                            </th>
+                        </tr>
+                        <empty name="message">
+                            <tr>
+                                <td colspan="9" align="left">
+                                    暂无记录
+                                </td>
+                            </tr>
+                            <else /> 
+                            <volist name="message" id="vo" empty="没有数据">
+                                <tr class="gridalternatingrow">
+                                    <td align="center">{$vo.id}</td>
+                                    <td align="left">{$vo.name}</td>
+                                    <td>{$vo.email}</td>
+                                    <td>{$vo.qq}</td>
+                                    <!-- <td>{$vo.tel}</td> -->
+                                    <td>{$vo.message}</td>
+                                    <td><eq name="vo.isreply" value="1">已回复<else/>未回复</eq></td>
+                                    <td>{$vo.date|date="Y-m-d h:m",###}</td>
+                                    <td align="center">
+                                        <a href="__URL__/check.html?id={$vo.id}&height=240&width=500&TB_iframe=false" class="thickbox">查看</a>
+                                       <!--  |<a href="__URL__/commont.html?id={$vo.id}&height=270&width=500&TB_iframe=true" class="thickbox">回复</a> --> | <a href="__URL__/emailReply.html?id={$vo.id}" ><eq name="vo.isreply" value="1">继续回复<else/>回复</eq></a>|
+                                         <a href="__URL__/delete/id/{$vo.id}" onclick="if(!confirm('确定删除吗？')){return false;}">删除</a>
+                                    </td>                                
+                                </tr>
+                            </volist>
+                        </empty>
+                    </tbody>
+                </table>
+                <table class="aspnetPager">
+                    <tr>
+                        <td align="left">
+                            <!-- <input type="checkbox" class="checkbox" id="cbselectall" />
+                            <label for="cbselectall">
+                                全选/取消</label> -->
+                        </td>
+                        <td align="right" valign="bottom">
+                           <ul class="pagelist">
+                                {$page}
+                           </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>
